@@ -10,7 +10,7 @@ They've talked about a bunch of fun stuff like merge conflicts, accidentally dis
 They also brought up the importance of efficient text compression. 
 Something about how if everyone indented their code with tabs instead of spaces, they would save a colossal amount of space. 
 But at that point you weren't reall concentrating, since you knew there was going to be free lunch and you were starving. 
-\parskip
+
 After you get home, you check your own code. 
 You realise, it's all indented with spaces!
 And every single space takes up a whole byte. 
@@ -24,17 +24,7 @@ You immediately get to work solving this problem.
 \section*{Input}
 The input begins with one number $F$, the amount of files in your project. Then follow $F$ files. 
 Each file begins with a number $L$, the lines in your program. Each following "line" is represented by a number $N$, the amount of spaces used to indent that line. 
-Your project can have up to 10 files, each with up to 50 lines. (You're mostly a code golfer).
+Your project can have up to 10 files, each with up to 20 lines. (You're mostly a code golfer). Oh and your project's written in Python, so the line length can be up to 80. 
 
 \section*{Output}
 Print two numbers, one on each line. First the width of your magical custom tab symbol in spaces, then the total amount of space saved in bytes.
-
-\section*{Scoring}
-\noindent
-\begin{tabular}{| l | l | l |}
-\hline
-Grupp & Poängvärde & Gränser \\ \hline
-$1$   & $40$       & $n$ \\ \hline
-$2$   & $20$       & $n$ \\ \hline
-$3$   & $40$       & Inga ytterligare begränsningar. \\ \hline
-\end{tabular}

@@ -17,13 +17,13 @@ const ll mod = 1000000007;
 #define rep(i, a, b) for(int i = (a); i < int(b); i++)
 #define trav(x, a) for(auto& x : a)
 
-int n;
-vi a;
+ll n;
+vl a;
 
 struct dp_n2_ds{
-    map<int, pi> m;
+    map<ll, pair<ll,ll>> m;
 
-    void add(int first, int second){
+    void add(ll first, ll second){
         auto ptr = m.lower_bound(first-second);
         if(ptr != m.begin()) ptr--;
         while(ptr != m.begin() && first <= ptr->second.first){
@@ -41,10 +41,10 @@ struct dp_n2_ds{
         m[first-second] = {first, second};
     }
 
-    int query(int move){
+    ll query(ll move){
         auto ptr = m.lower_bound(move);
         if(ptr == m.end()) ptr--;
-        int r = ptr->second.first;
+        ll r = ptr->second.first;
         if(ptr != m.begin()){
             ptr--;
             r = min(r, ptr->second.second+move);
@@ -52,24 +52,24 @@ struct dp_n2_ds{
         return r;
     }
 };
-vvi dp_n2_vec;
+vvl dp_n2_vec;
 dp_n2_ds _dp_n2_ds;
-int dp_n2(){
-    for(int i = 0; i < n; i++) a[i]++;
-    dp_n2_vec = vvi(n+1, vi(n+1, inf));
-    for(int i = 0; i <= n; i++)
-        dp_n2_vec[0][i] = -inf;
+ll dp_n2(){
+    for(ll i = 0; i < n; i++) a[i]++;
+    dp_n2_vec = vvl(n+1, vl(n+1, linf));
+    for(ll i = 0; i <= n; i++)
+        dp_n2_vec[0][i] = -linf;
 
-    int ans = 0;
-    for(int diag = 0; diag <= n-1; diag++){
+    ll ans = 0;
+    for(ll diag = 0; diag <= n-1; diag++){
         _dp_n2_ds = dp_n2_ds();
-        _dp_n2_ds.add(0, dp_n2_vec[max(0, -diag)][n-max(0, diag)]);
-        int addextra = 0;
-        for(int j = 1; j <= n-abs(diag); j++){
-            int pos = n - max(0, diag) - j;
-            int answer = max(0, -diag) + j;
+        _dp_n2_ds.add(0, dp_n2_vec[max(0ll, -diag)][n-max(0ll, diag)]);
+        ll addextra = 0;
+        for(ll j = 1; j <= n-abs(diag); j++){
+            ll pos = n - max(0ll, diag) - j;
+            ll answer = max(0ll, -diag) + j;
 
-            int r = min(_dp_n2_ds.query(a[pos]) + addextra, dp_n2_vec[answer][pos+1] - a[pos]);
+            ll r = min(_dp_n2_ds.query(a[pos]) + addextra, dp_n2_vec[answer][pos+1] - a[pos]);
 
             addextra += a[pos];
 
@@ -82,7 +82,7 @@ int dp_n2(){
         }
     }
 
-    for(int i = 0; i < n; i++) a[i]--;
+    for(ll i = 0; i < n; i++) a[i]--;
     return ans;
 }
 
@@ -91,8 +91,8 @@ int main(){
     cin.tie(0);
     
 	cin >> n;
-	a = vi(n);
+	a = vl(n);
 	for(int i = 0; i < n; i++) cin >> a[i];
-	int ans = dp_n2();
+	ll ans = dp_n2();
 	cout << ans << "\n";
 }

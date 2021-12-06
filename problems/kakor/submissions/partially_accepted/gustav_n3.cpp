@@ -17,28 +17,28 @@ const ll mod = 1000000007;
 #define rep(i, a, b) for(int i = (a); i < int(b); i++)
 #define trav(x, a) for(auto& x : a)
 
-int n;
-vi a;
+ll n;
+vl a;
 
-vvi dp_n3_iter_vec;
-int dp_n3_iter(){
-    for(int i = 0; i < n; i++) a[i]++;
-    dp_n3_iter_vec = vvi(n+1, vi(n+1));
+vvl dp_n3_iter_vec;
+ll dp_n3_iter(){
+    for(ll i = 0; i < n; i++) a[i]++;
+    dp_n3_iter_vec = vvl(n+1, vl(n+1));
 
-    int ans = 0;
-    for(int i = 0; i <= n; i++){
-        dp_n3_iter_vec[i][n] = inf;
-        dp_n3_iter_vec[0][i] = -inf;
+    ll ans = 0;
+    for(ll i = 0; i <= n; i++){
+        dp_n3_iter_vec[i][n] = linf;
+        dp_n3_iter_vec[0][i] = -linf;
     }
-    for(int answer = 1; answer <= n; answer++){
-        for(int pos = n-1; pos >= 0; pos--){
-            int s = 0;
-            int r = dp_n3_iter_vec[answer][pos+1] - a[pos];
-            for(int i = 0; i < min(n-pos, answer); i++){
+    for(ll answer = 1; answer <= n; answer++){
+        for(ll pos = n-1; pos >= 0; pos--){
+            ll s = 0;
+            ll r = dp_n3_iter_vec[answer][pos+1] - a[pos];
+            for(ll i = 0; i < min(n-pos, answer); i++){
                 s += a[i+pos];
                 if(a[i+pos] >= a[pos] && i > 0) break; // optional pruning
                 if(s-a[pos] >= r) break; // optional pruning
-                r = min(r, s + max(dp_n3_iter_vec[answer-i-1][pos+i+1], -a[pos]));
+                r = min(r, s + max(dp_n3_iter_vec[answer-i-1][pos+i+1], (ll)-a[pos]));
             }
             dp_n3_iter_vec[answer][pos] = r;
         }
@@ -46,7 +46,7 @@ int dp_n3_iter(){
         else break;
     }
 
-    for(int i = 0; i < n; i++) a[i]--;
+    for(ll i = 0; i < n; i++) a[i]--;
     return ans;
 }
 
@@ -55,8 +55,8 @@ int main(){
     cin.tie(0);
     
 	cin >> n;
-	a = vi(n);
+	a = vl(n);
 	for(int i = 0; i < n; i++) cin >> a[i];
-	int ans = dp_n3_iter();
+	ll ans = dp_n3_iter();
 	cout << ans << "\n";
 }

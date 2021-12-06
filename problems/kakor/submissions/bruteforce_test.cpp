@@ -229,25 +229,25 @@ int dp_n3(){
     return ans;
 }
 
-vvi dp_n3_iter_vec;
-int dp_n3_iter(){
-    for(int i = 0; i < n; i++) a[i]++;
-    dp_n3_iter_vec = vvi(n+1, vi(n+1));
+vvl dp_n3_iter_vec;
+ll dp_n3_iter(){
+    for(ll i = 0; i < n; i++) a[i]++;
+    dp_n3_iter_vec = vvl(n+1, vl(n+1));
 
-    int ans = 0;
-    for(int i = 0; i <= n; i++){
-        dp_n3_iter_vec[i][n] = inf;
-        dp_n3_iter_vec[0][i] = -inf;
+    ll ans = 0;
+    for(ll i = 0; i <= n; i++){
+        dp_n3_iter_vec[i][n] = linf;
+        dp_n3_iter_vec[0][i] = -linf;
     }
-    for(int answer = 1; answer <= n; answer++){
-        for(int pos = n-1; pos >= 0; pos--){
-            int s = 0;
-            int r = dp_n3_iter_vec[answer][pos+1] - a[pos];
-            for(int i = 0; i < min(n-pos, answer); i++){
+    for(ll answer = 1; answer <= n; answer++){
+        for(ll pos = n-1; pos >= 0; pos--){
+            ll s = 0;
+            ll r = dp_n3_iter_vec[answer][pos+1] - a[pos];
+            for(ll i = 0; i < min(n-pos, answer); i++){
                 s += a[i+pos];
                 if(a[i+pos] >= a[pos] && i > 0) break; // optional pruning
                 if(s-a[pos] >= r) break; // optional pruning
-                r = min(r, s + max(dp_n3_iter_vec[answer-i-1][pos+i+1], -a[pos]));
+                r = min(r, s + max(dp_n3_iter_vec[answer-i-1][pos+i+1], (ll)-a[pos]));
             }
             dp_n3_iter_vec[answer][pos] = r;
         }
@@ -255,15 +255,15 @@ int dp_n3_iter(){
         else break;
     }
 
-    for(int i = 0; i < n; i++) a[i]--;
+    for(ll i = 0; i < n; i++) a[i]--;
     return ans;
 }
 
 
 struct dp_n2_ds{
-    map<int, pi> m;
+    map<ll, pair<ll,ll>> m;
 
-    void add(int first, int second){
+    void add(ll first, ll second){
         auto ptr = m.lower_bound(first-second);
         if(ptr != m.begin()) ptr--;
         while(ptr != m.begin() && first <= ptr->second.first){
@@ -281,10 +281,10 @@ struct dp_n2_ds{
         m[first-second] = {first, second};
     }
 
-    int query(int move){
+    ll query(ll move){
         auto ptr = m.lower_bound(move);
         if(ptr == m.end()) ptr--;
-        int r = ptr->second.first;
+        ll r = ptr->second.first;
         if(ptr != m.begin()){
             ptr--;
             r = min(r, ptr->second.second+move);
@@ -292,24 +292,24 @@ struct dp_n2_ds{
         return r;
     }
 };
-vvi dp_n2_vec;
+vvl dp_n2_vec;
 dp_n2_ds _dp_n2_ds;
-int dp_n2(){
-    for(int i = 0; i < n; i++) a[i]++;
-    dp_n2_vec = vvi(n+1, vi(n+1, inf));
-    for(int i = 0; i <= n; i++)
-        dp_n2_vec[0][i] = -inf;
+ll dp_n2(){
+    for(ll i = 0; i < n; i++) a[i]++;
+    dp_n2_vec = vvl(n+1, vl(n+1, linf));
+    for(ll i = 0; i <= n; i++)
+        dp_n2_vec[0][i] = -linf;
 
-    int ans = 0;
-    for(int diag = 0; diag <= n-1; diag++){
+    ll ans = 0;
+    for(ll diag = 0; diag <= n-1; diag++){
         _dp_n2_ds = dp_n2_ds();
-        _dp_n2_ds.add(0, dp_n2_vec[max(0, -diag)][n-max(0, diag)]);
-        int addextra = 0;
-        for(int j = 1; j <= n-abs(diag); j++){
-            int pos = n - max(0, diag) - j;
-            int answer = max(0, -diag) + j;
+        _dp_n2_ds.add(0, dp_n2_vec[max(0ll, -diag)][n-max(0ll, diag)]);
+        ll addextra = 0;
+        for(ll j = 1; j <= n-abs(diag); j++){
+            ll pos = n - max(0ll, diag) - j;
+            ll answer = max(0ll, -diag) + j;
 
-            int r = min(_dp_n2_ds.query(a[pos]) + addextra, dp_n2_vec[answer][pos+1] - a[pos]);
+            ll r = min(_dp_n2_ds.query(a[pos]) + addextra, dp_n2_vec[answer][pos+1] - a[pos]);
 
             addextra += a[pos];
 
@@ -322,7 +322,7 @@ int dp_n2(){
         }
     }
 
-    for(int i = 0; i < n; i++) a[i]--;
+    for(ll i = 0; i < n; i++) a[i]--;
     return ans;
 }
 
@@ -332,8 +332,8 @@ int main(){
     cin.tie(0);
     srand(4);
 
-    n = 2500;
-    m = 2500;
+    n = 5000;
+    m = 1000000000;
 
     for(int test = 0; test < 10; test++){
         a = vi(n);
@@ -342,8 +342,8 @@ int main(){
             //cout << a[i] << " ";
         }
         //cout << endl;
-        //sort(all(a));
-        //reverse(all(a));
+        sort(all(a));
+        reverse(all(a));
 
         int ans = dp_n3_iter();
         int ans2 = dp_n2();

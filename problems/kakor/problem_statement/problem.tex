@@ -8,7 +8,7 @@ so they decided to play a game. They will take turns playing a move. A move cons
   \item taking a bite from a previously taken cookie
 \end{itemize}
 
-\noindent It is not allowed to take another cookie before finishing the last one.
+\noindent If Gustav or Oskar take a cookie, they must finish eating it before taking another one.
 When there are no cookies left and one player has finished his last cookie, he has to wait while the other player finishes his.
 
 Oskar's strategy is to always take the leftmost cookie (lowest index) when he can take a new cookie.
@@ -26,7 +26,7 @@ Output one integer, the maximum number of cookies Gustav can get.
 \noindent
 \begin{tabular}{| l | l | l |}
 \hline
-Grupp & Poängvärde & Gränser \\ \hline
+Group & Points     & Constraints \\ \hline
 $2$   & $10$       & $n \leq 20, a_i \leq 20$ \\ \hline
 $3$   & $10$       & $n \leq 75, a_i \leq 75$ \\ \hline
 $4$   & $20$       & $n \leq 250, a_i \leq 10^9$ \\ \hline

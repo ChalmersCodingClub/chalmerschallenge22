@@ -20,7 +20,6 @@ def hash(x):
         y = 4*x[i%64] + 2*x[(i+2)%64] + x[(i+10)%64]
         x[i%64] = [1,1,0,0,1,1,0,1][y]
     x = toint(x)
-
     for i in range(32):
         x += toint(tolist(x)[::-1])
         x ^= 3**40
@@ -42,3 +41,4 @@ for i in range(1000000):
     if(y < best):
         print(y)
         best = y
+

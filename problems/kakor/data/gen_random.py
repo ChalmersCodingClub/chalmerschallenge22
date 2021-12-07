@@ -10,7 +10,7 @@ def cmdlinearg(name, default=None):
     assert default is not None, name
     return default
 
-seed = int(cmdlinearg('seed', sys.argv[-1]))
+random.seed(int(cmdlinearg('seed', sys.argv[-1])))
 n = int(cmdlinearg('n'))
 max_a = int(cmdlinearg('aMax'))
 sort_type = cmdlinearg('sortType', 'no')

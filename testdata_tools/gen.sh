@@ -123,7 +123,7 @@ compile_py () {
   elif [[ $2 == *"python2"* ]]; then
     add_program $(_base $1) "python2 $1"
   else
-    add_program $(_base $1) "python3 $1"
+    add_program $(_base $1) "pypy3 $1"
   fi
 }
 

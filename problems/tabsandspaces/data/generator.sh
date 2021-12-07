@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
-
+USE_SCORING=0
 . ../../../testdata_tools/gen.sh
 
 use_solution victor_py3.py
 
 compile gen.py
 
-group group1 9
-tc 1
-tc g1_1 gen
-tc g1_2 gen
-tc g1_3 gen
-tc g1_4 gen
-tc g1_5 gen
-tc g1_6 gen
-tc g1_7 gen
-tc g1_8 gen
-tc g1_9 gen
+sample 1
+sample 2
+
+tc t01 gen
+tc t02 gen
+tc t03 gen
+tc t04 gen
+tc t05 gen
+tc t06 gen
+tc t07 gen
+tc t08 gen
+tc t09 gen

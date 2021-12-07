@@ -68,3 +68,4 @@ tc g4_10 gen_random n=5000 aMax=1000000000 sortType=sort
 tc g4_11 gen_random n=5000 aMax=1000000000 sortType=rev
 tc g4_12 gen_random n=5000 aMax=1000000000 sortType=almostsort
 tc g4_13 gen_random n=5000 aMax=1000000000 sortType=almostrev
+tc g4_14 gen_random n=5000 aMax=1

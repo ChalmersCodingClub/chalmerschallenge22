@@ -24,7 +24,7 @@ elif 'rev' in sort_type:
     a.sort()
     a.reverse()
 if 'almost' in sort_type:
-    for i in range(3*n):
+    for i in range(n):
         x = random.randrange(n)
         y = min(max(0, x + random.randint(-4, 4)), n-1)
         a[x], a[y] = a[y], a[x]

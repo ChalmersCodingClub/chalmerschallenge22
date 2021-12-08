@@ -44,7 +44,7 @@ ull Hash(ull x){
     }
     x = toint(X);
 
-    for(int i = 0; i < 32; i++){
+    for(int i = 0; i < 16; i++){
         X = tolist(x);
         reverse(all(X));
         __int128_t tmp = (__int128_t)x+toint(X);
@@ -59,6 +59,25 @@ ull Hash(ull x){
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
-	cout << Hash(12345678901234567890) << endl;
+    srand(4);
+
+    double time_per_case = 0.095;
+
+	clock_t start = clock();
+    for(int i = 0; i < 10; i++){
+        ull x;
+        cin >> x;
+        x <<= 36;
+        ull best = ULLONG_MAX;
+        ull bestk = 0;
+        while((clock()-start)/(double)CLOCKS_PER_SEC < time_per_case*(i+1)){
+            ull k = ((ll(rand())<<20) ^ rand())%(1ll<<36);
+            ull y = Hash(x^k);
+            if(y < best){
+                best = y;
+                bestk = k;
+            }
+        }
+        cout << bestk << endl;
+    }
 }

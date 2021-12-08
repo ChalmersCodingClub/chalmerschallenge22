@@ -62,7 +62,7 @@ ull Hash(ull x){
     }
     x = toint(X);
 
-    for(int i = 0; i < 32; i++){
+    for(int i = 0; i < 16; i++){
         X = tolist(x);
         reverse(all(X));
         __int128_t tmp = (__int128_t)x+toint(X);
@@ -85,10 +85,20 @@ int main(int argc, char** argv) {
 
     ifstream fin(input_file);
     fin.exceptions(cin.failbit | cin.badbit | cin.eofbit);
-
 	vector<ull> inputs(10);
 	for(int i = 0; i < 10; i++){
 		fin >> inputs[i];
+	}
+    assert_done(fin, judge_error);
+    fin.close();
+
+    bool sample = (inputs[0] == 111131462);
+
+    fin = ifstream(answer_file);
+    fin.exceptions(cin.failbit | cin.badbit | cin.eofbit);
+	vector<ull> best(10);
+	for(int i = 0; i < 10; i++){
+		fin >> best[i];
 	}
     assert_done(fin, judge_error);
     fin.close();
@@ -104,10 +114,14 @@ int main(int argc, char** argv) {
     long double total_score = 0;
     for(int i = 0; i < 10; i++){
         if(outputs[i] >= (1ll<<36)) die("too big or small output");
-        ull y = Hash((inputs[i]<<36)^outputs[i]);
-        long double score = 10 - log2l((long double)y)/6.4;
+        ull hashout = Hash((inputs[i]<<36)^outputs[i]);
+        ull besthash = Hash((inputs[i]<<36)^best[i]);
+        if(!sample && hashout < besthash) judge_error("better than best");
+        long double t = (64-log2l(hashout))/(64-log2l(besthash));
+        long double score = max(2*t, 30*t-20);
         total_score += score;
     }
-    if(inputs[0] == 1) accept(0); // sample
+
+    if(sample) accept(0);
     accept(total_score);
 }

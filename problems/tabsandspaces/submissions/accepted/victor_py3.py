@@ -11,8 +11,6 @@ for _ in range(int(input())):
         else:
             lengths[a] = 1
 
-length = sum(k * lengths[k] for k in lengths)
-
 if 0 in lengths:
     lengths.pop(0)
 # print(length, lengths, file=stderr)
@@ -25,13 +23,11 @@ for i in range(1, max(lengths) + 1):
 
     for l in lengths:
         if i <= l:
-            a += (l * lengths[l]) // i + (l * lengths[l]) % i
-        else:
-            a += l * lengths[l]
+            a += (l - l // i - l % i) * lengths[l]
 
-    if best < length - a:
+    if best < a:
         bestl = i
-        best = length - a
+        best = a
 
 print(bestl)
 print(best)

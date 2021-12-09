@@ -13,21 +13,23 @@ for _ in range(int(input())):
 
 if 0 in lengths:
     lengths.pop(0)
-# print(length, lengths, file=stderr)
+# print(lengths, file=stderr)
 
-best = 0
-bestl = 0
-for i in range(1, max(lengths) + 1):
-    a = 0
-    # print(i, file=stderr)
+if len(lengths):
+    best = 0
+    bestl = 1
+    for i in range(1, max(lengths) + 1):
+        a = 0
+        # print(i, file=stderr)
 
-    for l in lengths:
-        if i <= l:
+        for l in lengths:
             a += (l - l // i - l % i) * lengths[l]
 
-    if best < a:
-        bestl = i
-        best = a
+        if best < a:
+            bestl = i
+            best = a
 
-print(bestl)
-print(best)
+    print(bestl)
+    print(best)
+else:
+    print(1, 0, sep="\n")

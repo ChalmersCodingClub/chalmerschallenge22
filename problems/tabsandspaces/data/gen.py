@@ -10,8 +10,8 @@ for _ in range(file):
     lines = randint(1, 20)
     f = []
     for _ in range(lines):
-        l = tab * randint(0, 80 // tab)
-        f.append(l + randint(0, 80 - l))
+        l = tab * randint(0, max(0, 80 // tab - 1))
+        f.append(l + randint(0, max(0, 80 - l - 1)))
     files.append(f)
 
 print(file)

@@ -5,6 +5,8 @@
 use_solution gustav.cpp
 
 compile gen_random.py
+compile gen_bigsum.py
+compile gen_bigans.py
 
 samplegroup
 limits nMax=10 aMax=10
@@ -28,6 +30,8 @@ tc g1_8 gen_random n=10 aMax=20
 tc g1_9 gen_random n=20 aMax=20
 tc g1_10 gen_random n=20 aMax=20 sortType=sort
 tc g1_11 gen_random n=20 aMax=20 sortType=almostrev
+tc g1_12 gen_bigsum n=20 aMax=20
+tc g1_13 gen_bigans n=20 aMax=20
 
 group group2 10
 limits nMax=75 aMax=75
@@ -41,6 +45,8 @@ tc g2_6 gen_random n=75 aMax=75
 tc g2_7 gen_random n=75 aMax=75 sortType=almostsort
 tc g2_8 gen_random n=75 aMax=75 sortType=rev
 tc g2_9 gen_random n=75 aMax=1
+tc g2_10 gen_bigsum n=75 aMax=75
+tc g2_11 gen_bigans n=75 aMax=75
 
 group group3 20
 limits nMax=250 aMax=1000000000
@@ -54,6 +60,8 @@ tc g3_6 gen_random n=250 aMax=1000000000 sortType=sort
 tc g3_7 gen_random n=250 aMax=1000000000 sortType=rev
 tc g3_8 gen_random n=250 aMax=1000000000 sortType=almostsort
 tc g3_9 gen_random n=250 aMax=1000000000 sortType=almostrev
+tc g3_10 gen_bigsum n=250 aMax=1000000000
+tc g3_11 gen_bigans n=250 aMax=1000000000
 
 group group4 60
 limits nMax=5000 aMax=1000000000
@@ -67,8 +75,11 @@ tc g4_6 gen_random n=5000 aMax=250
 tc g4_7 gen_random n=1500 aMax=250
 tc g4_8 gen_random n=250 aMax=1500
 tc g4_9 gen_random n=5000 aMax=1000000000
-tc g4_10 gen_random n=5000 aMax=1000000000 sortType=sort
-tc g4_11 gen_random n=5000 aMax=1000000000 sortType=rev
-tc g4_12 gen_random n=5000 aMax=1000000000 sortType=almostsort
-tc g4_13 gen_random n=5000 aMax=1000000000 sortType=almostrev
-tc g4_14 gen_random n=5000 aMax=1
+tc g4_10 gen_random n=5000 aMax=1000000000
+tc g4_11 gen_random n=5000 aMax=1000000000 sortType=sort
+tc g4_12 gen_random n=5000 aMax=1000000000 sortType=rev
+tc g4_13 gen_random n=5000 aMax=1000000000 sortType=almostsort
+tc g4_14 gen_random n=5000 aMax=1000000000 sortType=almostrev
+tc g4_15 gen_random n=5000 aMax=1
+tc g4_16 gen_bigsum n=5000 aMax=1000000000
+tc g4_17 gen_bigans n=5000 aMax=1000000000

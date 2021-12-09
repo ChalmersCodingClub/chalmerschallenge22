@@ -1,4 +1,6 @@
-from random import randint
+import sys
+from random import randint, seed
+seed(int(sys.argv[1]))
 
 tab = randint(1, 40)
 file = randint(1, 10)

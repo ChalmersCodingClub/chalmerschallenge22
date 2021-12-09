@@ -18,7 +18,7 @@ for f in range(files):
         a = sys.stdin.readline()
         assert re.match(integer + "\n", a), "line length not an integer!!"
         a = int(a)
-        assert 0 <= a <= 80, "line length not between 0 and 80!!"
+        assert 0 <= a <= 79, "line length not between 0 and 79!!"
 
 assert sys.stdin.readline() == "", "junk at end of file!!"
 

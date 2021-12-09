@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
 N, M, K = [int(q) for q in input().split()]
 
 values = [int(a) for a in input().split()]
+transported = []
 A = []
 B = []
 
@@ -8,6 +10,7 @@ for i in range(M):
     a, b = [int(q) for q in input().split()]
     A.append(a)
     B.append(b)
+    transported.append(values[a])
     values[b] += values[a]
     values[a] = 0
 
@@ -18,7 +21,7 @@ for i in range(M-1, -1, -1):
     if B[i] in seen_before:
         continue
     seen_before.add(A[i])
-    legal_transport.append(values[A[i]])
+    legal_transport.append(transported[i])
 
 legal_transport.sort()
 

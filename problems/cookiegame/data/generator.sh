@@ -14,7 +14,7 @@ sample 1
 sample 2
 sample 3
 
-group group1 10
+group group1 25
 limits nMax=20 aMax=20
 tc 1
 tc 2
@@ -33,7 +33,7 @@ tc g1_11 gen_random n=20 aMax=20 sortType=almostrev
 tc g1_12 gen_bigsum n=20 aMax=20
 tc g1_13 gen_bigans n=20 aMax=20
 
-group group2 10
+group group2 20
 limits nMax=75 aMax=75
 include_group group1
 tc g2_1 gen_random n=20 aMax=75
@@ -48,7 +48,7 @@ tc g2_9 gen_random n=75 aMax=1
 tc g2_10 gen_bigsum n=75 aMax=75
 tc g2_11 gen_bigans n=75 aMax=75
 
-group group3 20
+group group3 15
 limits nMax=250 aMax=1000000000
 include_group group2
 tc g3_1 gen_random n=250 aMax=5
@@ -63,7 +63,7 @@ tc g3_9 gen_random n=250 aMax=1000000000 sortType=almostrev
 tc g3_10 gen_bigsum n=250 aMax=1000000000
 tc g3_11 gen_bigans n=250 aMax=1000000000
 
-group group4 60
+group group4 40
 limits nMax=5000 aMax=1000000000
 include_group group3
 tc g4_1 gen_random n=5000 aMax=5

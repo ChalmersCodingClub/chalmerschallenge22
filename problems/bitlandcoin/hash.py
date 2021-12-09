@@ -22,4 +22,3 @@ def hash(x):
         if(x >= 2**64): x >>= 1
     assert 0 <= x < 2**64
     return x
-

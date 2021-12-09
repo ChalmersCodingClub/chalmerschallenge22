@@ -27,8 +27,7 @@ int main(){
     a /= g;
     b /= g;
     if((__int128_t)a * b < n){
-        g = sqrtl(n/(a*b));
-        while(g*a * g*b >= n) g--;
+        g = sqrtl(n / a / b);
         while(g*a * g*b < n) g++;
         a *= g;
         b *= g;

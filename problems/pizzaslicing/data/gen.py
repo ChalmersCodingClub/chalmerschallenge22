@@ -10,7 +10,7 @@ def cmdlinearg(name, default=None):
 
 seed(int(cmdlinearg('seed', sys.argv[-1])))
 MaxD = int(cmdlinearg('MaxD', 10**4))
-MaxAB = int(cmdlinearg('MaxAB', 10**5))
+MaxAB = int(cmdlinearg('MaxAB', 10**18))
 MaxN = int(cmdlinearg('MaxN', 10**18))
 
 MaxABd = 10**18

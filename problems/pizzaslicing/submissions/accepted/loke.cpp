@@ -25,7 +25,7 @@ int main() {
     ll N, A, B; cin >> N >> A >> B;
     ll d = gcd(A, B);
     A /= d; B /= d;
-    ll s = sqrt(N / (A*B));
+    ll s = sqrt(N / A / B);
     if (s != 0) {
         while (A*B*s*s < N) s++;
         A *= s;

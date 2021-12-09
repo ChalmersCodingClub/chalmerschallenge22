@@ -9,10 +9,17 @@ def cmdlinearg(name, default=None):
     return default
 
 seed(int(cmdlinearg('seed', sys.argv[-1])))
+MaxD = int(cmdlinearg('MaxD', 10**4))
+MaxAB = int(cmdlinearg('MaxAB', 10**5))
+MaxN = int(cmdlinearg('MaxN', 10**18))
 
-d = randint(1, 10**4)
-A = d*randint(1, 10**5)
-B = d*randint(1, 10**5)
-N = randint(1, 10**18)
+MaxABd = 10**18
+
+d = randint(1, MaxD)
+MaxAB = min(MaxAB, MaxABd//d)
+
+A = d*randint(1, MaxAB)
+B = d*randint(1, MaxAB)
+N = randint(2, MaxN)
 
 print(N, A, B)

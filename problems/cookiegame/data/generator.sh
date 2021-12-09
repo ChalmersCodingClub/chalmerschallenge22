@@ -33,11 +33,14 @@ group group2 10
 limits nMax=75 aMax=75
 include_group group1
 tc g2_1 gen_random n=20 aMax=75
-tc g2_2 gen_random n=75 aMax=20
-tc g2_3 gen_random n=75 aMax=75
-tc g2_4 gen_random n=75 aMax=75 sortType=almostsort
-tc g2_5 gen_random n=75 aMax=75 sortType=rev
-tc g2_6 gen_random n=75 aMax=1
+tc g2_2 gen_random n=30 aMax=75
+tc g2_3 gen_random n=31 aMax=75
+tc g2_4 gen_random n=50 aMax=75
+tc g2_5 gen_random n=75 aMax=20
+tc g2_6 gen_random n=75 aMax=75
+tc g2_7 gen_random n=75 aMax=75 sortType=almostsort
+tc g2_8 gen_random n=75 aMax=75 sortType=rev
+tc g2_9 gen_random n=75 aMax=1
 
 group group3 20
 limits nMax=250 aMax=1000000000

@@ -24,7 +24,10 @@ You immediately get to work solving this problem.
 \section*{Input}
 The input begins with one number $F$, the amount of files in your project. Then follow $F$ files. 
 Each file begins with a number $L$, the lines in your program. Each following "line" is represented by a number $N$, the amount of spaces used to indent that line. 
-Your project can have up to 10 files, each with up to 20 lines. (You're mostly a code golfer). Oh and your project's written in Python, so the line length can be up to 80. 
+Your project can have up to 10 files, each with up to 20 lines. (You're mostly a code golfer). Oh and your project's written in Python, so the line length can be up to 80 of which 79 characters can be spaces. 
 
 \section*{Output}
-Print two numbers, one on each line. First the width of your magical custom tab symbol in spaces, then the total amount of space saved in bytes.
+Print two numbers, one on each line. First the width of your custom tab symbol in spaces, then the total amount of space saved in bytes.
+
+\section*{Things to note}
+Your code still has to look the same after you've substituted some of the spaces with tabs. If you find two or more tab sizes that save the same amount of space, pick the smaller one. 

@@ -1,11 +1,11 @@
 \problemname{Bitland Coin}
 The central bank of Bitland just launched its official cryptocurrency Bitland Coin (BLC). To mine a block of BLC
-you need to find a sufficiently small value of $\texttt{hash}(x \,.\, k)$ where $\,.\,$ is bit-concatenation, $x$ is a $28$-bit number you can't change,
+you need to find a sufficiently small value of $\texttt{hash}(x \,.\, k)$ where $\,.\,$ is bit-concatenation, $x$ is a given $28$-bit number,
 $k$ is a $36$-bit number you can choose freely and $\texttt{hash}$ is the function defined below.
 A different way of writing the same thing would be $\texttt{hash}(2^{36} x + k)$.
 
-Bitland where confident they had the resources and the expertise to create a hash function better than SHA256.
-One of their genious ideas was to use a $64$-bit input and output to save storage space (bits are not as abundant in Bitland as you might expect).
+Bitland were confident they had the resources and the expertise to create a hash function better than SHA256.
+One of their genius ideas was to use a $64$-bit input and output to save storage space (bits are not as abundant in Bitland as you might expect).
 The result of their extensive research, the hash function used in BLC, is defined by the following python code.
 
 \begin{verbatim}
@@ -24,7 +24,7 @@ def hash(x):
         y = 4*x[i%64] + 2*x[(i+2)%64] + x[(i+10)%64]
         x[i%64] = [1,1,0,0,1,1,0,1][y]
     x = toint(x)
-    for i in range(32):
+    for i in range(16):
         x += toint(tolist(x)[::-1])
         x ^= 3**40
         if(x >= 2**64): x >>= 1
@@ -32,21 +32,25 @@ def hash(x):
     return x
 \end{verbatim}
 
-You want to get rich by mining this coin. BLC automatically changes its difficulty (how small the hash needs to be). Therefore, you want to write a program which finds a value of $k$ 
-to make the hash as small as possible, the smaller the better.
+\noindent You want to get rich by mining this coin. BLC automatically changes its difficulty (how small the hash needs to be). Therefore, you want to write a program which
+finds a value of $k$ to make the hash as small as possible, the smaller the better.
 
 \section*{Input}
-Input consists of $10$ lines. The $i$th line contains one integer $x_i$. All $x_i$ are sampled uniformly at random from $[0, 2^{28}-1]$.
+Input consists of $10$ lines, each describing a block you want to mine. The $i$th line contains the integer $x_i$. All $x_i$ are sampled uniformly at random from $[0, 2^{28}-1]$.
 
 \section*{Output}
 Output $10$ integers $k_i$, one per line.
 
 \section*{Scoring}
-Your program will only be run on one testcase (containing $10$ lines).
-Your score for the $i$th line is $10 - \frac{10}{64} \cdot \log_2(\texttt{hash}(2^{36} \cdot x_i + k_i))$. Your total score is the sum of scores
-for each line, rounded to two decimal places. The sample testcase is not worth any points.
+Your program will only be run on one test case (containing $10$ lines). The sample test case is not worth any points. It is not guaranteed to be possible to get $100$ points.
+
+A score is calculated for each block. Your total score is the sum of these scores, rounded to two decimal places.
+To calculate the score of the $i$th block, where you obtained the hash $h_i = \texttt{hash}(2^{36} x_i + k_i)$ and the optimal (smallest possible) hash is $H_i$,
+first calculate $t_i = \frac{64-\log_2(h_i)}{64-\log_2(H_i)}$. Your score for this block will be $\max(2t_i, 30t_i-20)$.
+
+TL;DR: You will get more points the smaller hashes you get.
 
 \section*{Explanation of sample}
-The first line of input and output results in the hash $\texttt{hash}(2^{36} \cdot 111131462 + 57474941445) = \texttt{hash}(7636895975021609477) = 112582045000626944$.
-The score for the first line is $10 - \frac{10}{64} \cdot \log_2(112582045000626944) \approx 1.14941$. The same procedure for each of the following lines gives a
-total score of TODO.
+The sample output gets the hash $h_1 = \texttt{hash}(2^{36} \cdot 111131462 + 50363195222) = \texttt{hash}(7636895967909863254) = 15659998746091827$ for the first block.
+An optimal answer for the first block would have been $1090594820$, corresponding to the hash $H_1 = 602833507760528$.
+This gives $t_1 = \frac{64-\log_2(h_1)}{64-\log_2(H_1)} \approx 0.68465$ and a score for the first block of approximately $\max(2*0.68465, 30*0.68465-20) = 1.3693$.

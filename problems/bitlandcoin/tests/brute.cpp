@@ -44,7 +44,7 @@ ull Hash(ull x){
     }
     x = toint(X);
 
-    for(int i = 0; i < 32; i++){
+    for(int i = 0; i < 16; i++){
         X = tolist(x);
         reverse(all(X));
         __int128_t tmp = (__int128_t)x+toint(X);
@@ -59,22 +59,58 @@ ull Hash(ull x){
 int main(){
     ios::sync_with_stdio(0);
     cin.tie(0);
+    srand(4);
+
+    ull inputs[] = {
+        267775413,
+        21347554,
+        27955642,
+        53083115,
+        262453518,
+        80381146,
+        169522623,
+        72797448,
+        26617584,
+        34529522
+    };
+    
+    /*
+    ull inputs[] = { //sample
+        111131462,
+        229052375,
+        257596593,
+        38597773,
+        23809983,
+        258400715,
+        233947578,
+        110845532,
+        114293771,
+        9972238
+    };
+    */
+    double time_per_case = 0.095;
 
 	clock_t start = clock();
+    double score = 0;
     for(int i = 0; i < 10; i++){
-        ull x;
-        cin >> x;
+        ull x = inputs[i];
         x <<= 36;
         ull best = ULLONG_MAX;
         ull bestk = 0;
-        while((clock()-start)/(double)CLOCKS_PER_SEC < 0.095*(i+1)){
+        int iterations = 0;
+        unordered_set<ull> seen;
+        while((clock()-start)/(double)CLOCKS_PER_SEC < time_per_case*(i+1)){
             ull k = ((ll(rand())<<20) ^ rand())%(1ll<<36);
             ull y = Hash(x^k);
+            iterations++;
+            seen.insert(y);
             if(y < best){
                 best = y;
                 bestk = k;
             }
         }
-        cout << bestk << endl;
+        cout << bestk << " " << best << "    " << iterations << " " << sz(seen) << endl;
+        score += 10-log2l(best)/6.4;
     }
+    debug(score);
 }

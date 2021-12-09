@@ -3,22 +3,23 @@
 using namespace std;
 
 void run() {
-    int N = Int(1, 3e5);
+    int N = Int(2, 3e5);
     Space();
     int M = Int(1, 3e5);
     Space();
-    int K = Int(1, 3e5);
+    int K = Int(1, N);
     Endl();
     for(int i = 0; i < N; i++){
         Int(0, 1e9);
-        Space();
+        if(i != N-1) Space();
     }
     Endl();
     for(int i = 0; i < M; i++){
-        Int(0, N);
+        int A = Int(0, N-1);
         Space();
-        Int(0, N);
+        int B = Int(0, N-1);
         Endl();
+        assert(A != B);
     }
     Eof();
 }

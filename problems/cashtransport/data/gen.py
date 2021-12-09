@@ -20,7 +20,7 @@ def random_balance():
 
 N = random.randint(2, n_max)
 M = random.randint(1, m_max)
-K = random.randint(1, k_max)
+K = random.randint(1, min(k_max, N))
 print(N, M, K)
 print(" ".join(str(random_balance()) for _ in range(N)))
 for i in range(M):

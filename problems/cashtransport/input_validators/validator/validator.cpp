@@ -7,7 +7,7 @@ void run() {
     Space();
     int M = Int(1, 3e5);
     Space();
-    int K = Int(1, N);
+    int K = Int(1, M);
     Endl();
     for(int i = 0; i < N; i++){
         Int(0, 1e9);

@@ -14,8 +14,8 @@ B1Max = int(cmdlinearg('B1Max', 1e9))
 A2Max = int(cmdlinearg('A2Max', 1e9))
 B2Max = int(cmdlinearg('B2Max', 1e9))
 
-a1 = randint(1, A1Max)
-b1 = randint(1, B1Max)
+a1 = randint(0, A1Max)
+b1 = randint(0, B1Max)
 a2 = randint(0, min(a1, A2Max))
 b2 = randint(0, min(b1, B2Max))
 

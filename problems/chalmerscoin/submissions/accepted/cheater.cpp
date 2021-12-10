@@ -16,7 +16,7 @@ const ll mod = 1000000007;
 #define sz(x) ((int)(x).size())
 #define rep(i, a, b) for(int i = (a); i < int(b); i++)
 #define trav(x, a) for(auto& x : a)
-typedef unsigned long long ull; 
+typedef unsigned long long ull;
 
 
 int main(){

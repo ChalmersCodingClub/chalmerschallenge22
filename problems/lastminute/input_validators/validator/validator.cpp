@@ -11,8 +11,6 @@ void run() {
 	int c = Int(0, 1e9);
 	Space();
 	int d = Int(0, 1e9);
-	assert(c <= a);
-	assert(d <= b);
 	Endl();
 	Eof();
 }

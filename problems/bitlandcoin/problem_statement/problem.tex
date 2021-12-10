@@ -44,13 +44,13 @@ Output $10$ integers $k_i$, one per line.
 \section*{Scoring}
 Your program will only be run on one test case (containing $10$ lines). The sample test case is not worth any points. It is not guaranteed to be possible to get $100$ points.
 
-A score is calculated for each block. Your total score is the sum of these scores, rounded to two decimal places.
-To calculate the score of the $i$th block, where you obtained the hash $h_i = \texttt{hash}(2^{36} x_i + k_i)$ and the optimal (smallest possible) hash is $H_i$,
-first calculate $t_i = \frac{64-\log_2(h_i)}{64-\log_2(H_i)}$. Your score for this block will be $\max(2t_i, 30t_i-20)$.
+Your final score is the sum of your score for each block, rounded to two decimal places. For each block, your score is $\max(2t_i, 30t_i-20)$
+where $t_i = \frac{64-\log_2(h_i)}{64-\log_2(H_i)}$,
+$h_i$ is the hash you have obtained ($h_i = \texttt{hash}(2^{36} x_i + k_i)$) and $H_i$ is the optimal hash.
 
 TL;DR: You will get more points the smaller hashes you get.
 
 \section*{Explanation of sample}
-The sample output gets the hash $h_1 = \texttt{hash}(2^{36} \cdot 111131462 + 50363195222) = \texttt{hash}(7636895967909863254) = 15659998746091827$ for the first block.
+For the first block, the sample output gets the hash $h_1 = \texttt{hash}(2^{36} \cdot 111131462 + 50363195222) = \texttt{hash}(7636895967909863254) = 15659998746091827$.
 An optimal answer for the first block would have been $1090594820$, corresponding to the hash $H_1 = 602833507760528$.
-This gives $t_1 = \frac{64-\log_2(h_1)}{64-\log_2(H_1)} \approx 0.68465$ and a score for the first block of approximately $\max(2*0.68465, 30*0.68465-20) = 1.3693$.
+This gives $t_1 = \frac{64-\log_2(h_1)}{64-\log_2(H_1)} \approx 0.68465$ and a score for the first block of approximately $\max(2 \cdot 0.68465, 30 \cdot 0.68465-20) = 1.3693$.

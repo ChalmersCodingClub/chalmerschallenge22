@@ -4,9 +4,9 @@
 #define sz(v) int(v.size())
 
 void run() {
-	int a = Int(1, 1e9);
+	int a = Int(0, 1e9);
 	Space();
-	int b = Int(1, 1e9);
+	int b = Int(0, 1e9);
 	Space();
 	int c = Int(0, 1e9);
 	Space();

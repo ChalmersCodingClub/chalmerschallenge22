@@ -41,3 +41,6 @@ tc t29 gen
 tc t30 gen
 tc t31 gen
 tc t32 gen
+tc_manual ../manual_tests/a1.in
+tc_manual ../manual_tests/a2.in
+tc_manual ../manual_tests/a3.in

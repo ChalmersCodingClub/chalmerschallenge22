@@ -44,3 +44,4 @@ tc t32 gen
 tc_manual ../manual_tests/a1.in
 tc_manual ../manual_tests/a2.in
 tc_manual ../manual_tests/a3.in
+tc_manual ../manual_tests/a4.in

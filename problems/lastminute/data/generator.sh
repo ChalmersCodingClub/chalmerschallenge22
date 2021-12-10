@@ -28,3 +28,9 @@ tc t14 gen
 tc t15 gen
 tc t16 gen
 tc t17 gen
+tc t18 gen A1Max=0 B1Max=0
+tc t19 gen B2Max=0
+tc t20 gen A1Max=0 B1Max=0 A2Max=0 B2Max=0
+tc t21 gen A1Max=0 B1Max=0 A2Max=0
+tc t22 gen A1Max=0 A2Max=0 B2Max=0
+tc t23 gen B1Max=0 A2Max=0 B2Max=0

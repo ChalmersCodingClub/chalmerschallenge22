@@ -16,7 +16,7 @@ B2Max = int(cmdlinearg('B2Max', 1e9))
 
 a1 = randint(0, A1Max)
 b1 = randint(0, B1Max)
-a2 = randint(0, min(a1, A2Max))
-b2 = randint(0, min(b1, B2Max))
+a2 = randint(0, A2Max)
+b2 = randint(0, B2Max)
 
 print(a1, b1, a2, b2)

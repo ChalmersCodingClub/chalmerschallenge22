@@ -9,7 +9,7 @@ A different way of writing the same thing would be $\texttt{hash}(2^{36} x +
 k)$.
 
 The industrial management students were confident they had the resources and the
-expertise to create a hash function better than SHA256.  One of their genius
+expertise to create a hash function better than SHA256. One of their genius
 ideas was to use a $64$-bit input and output to save storage space. The result
 of their extensive research, the hash function used in CC, is defined by the
 following python code.
@@ -52,14 +52,13 @@ from $[0, 2^{28}-1]$.
 Output $10$ integers $k_i$, one per line.
 
 \section*{Scoring}
-Your program will only be run on one test case (containing $10$ lines). The
-sample test case is not worth any points. It is not guaranteed that it is
-possible to get $100$ points.
 
-Your final score is the sum of your score for each block, rounded to two decimal
-places. For each block, your score is $\max(2t_i, 30t_i-20)$ where $t_i =
-\frac{64-\log_2(h_i)}{64-\log_2(H_i)}$, $h_i$ is the hash you have obtained
-($h_i = \texttt{hash}(2^{36} x_i + k_i)$) and $H_i$ is the optimal hash.
+Your program will only be run on one test case (containing $10$ lines). The
+sample test case is not worth any points. Your final score is the sum of your
+score for each block, rounded to two decimal places. For each block, your score
+is $\max(2t_i, 30t_i-20)$ where $t_i = \frac{64-\log_2(h_i)}{64-\log_2(H_i)}$,
+$h_i$ is the hash you have obtained ($h_i = \texttt{hash}(2^{36} x_i + k_i)$)
+and $H_i$ is the optimal hash.
 
 TL;DR: You will get more points the smaller hashes you get.
 

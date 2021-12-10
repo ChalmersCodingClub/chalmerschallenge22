@@ -18,9 +18,9 @@ legal_transport = []
 seen_before = set()
 
 for i in range(M-1, -1, -1):
+    seen_before.add(A[i])
     if B[i] in seen_before:
         continue
-    seen_before.add(A[i])
     legal_transport.append(transported[i])
 
 legal_transport.sort()

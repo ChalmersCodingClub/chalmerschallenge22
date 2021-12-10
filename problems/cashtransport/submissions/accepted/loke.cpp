@@ -30,10 +30,10 @@ int main() {
     }
     vi stealable;
     for(int i = M-1; i >= 0; i--) {
+        outgoing[x[i]] = true;
         if (outgoing[y[i]]) {
             continue;
         }
-        outgoing[x[i]] = true;
         stealable.push_back(transported[i]);
     }
     sort(rall(stealable));

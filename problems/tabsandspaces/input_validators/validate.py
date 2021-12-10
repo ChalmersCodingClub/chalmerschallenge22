@@ -5,7 +5,7 @@ import re
 integer = "(0|-?[1-9]\d*)"
 
 files = sys.stdin.readline()
-assert re.match(integer + "\n", files), "fie count not an integer!!"
+assert re.match(integer + "\n", files), "file count not an integer!!"
 files = int(files)
 assert 1 <= files <= 10, "file count not between 1 and 10!!"
 
